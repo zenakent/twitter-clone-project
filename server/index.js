@@ -6,6 +6,7 @@ const cors = require("cors");
 const errorHandler = require("./handlers/error");
 
 const authRoutes = require("./routes/auth");
+const messagesRoutes = require("./routes/messages");
 
 const PORT = 8081;
 
@@ -13,6 +14,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 app.use("/api/auth", authRoutes);
+app.use("/api/users/:id/messages", messagesRoutes);
 //all routes
 
 //error handling when route is not reached
