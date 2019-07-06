@@ -37,7 +37,7 @@ userSchema.pre("save", async function(next) {
 });
 
 //compare password from db to make sure users entered the correct passwords
-userSchema.method.compare = async function(candidatePassword, next) {
+userSchema.methods.comparePassword = async function(candidatePassword, next) {
   try {
     let isMatch = await bcrypt.compare(candidatePassword, this.password);
     return isMatch;
