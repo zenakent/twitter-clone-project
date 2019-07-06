@@ -21,6 +21,20 @@ exports.createMessage = async function(req, res, next) {
   }
 };
 
-exports.getMessage = async function(req, res, next) {};
+exports.getMessage = async function(req, res, next) {
+  try {
+    console.log(req.params);
+    let message = await db.Message.findById(req.params.message_id);
+    return res.status(200).json(message);
+  } catch (error) {
+    return next(error);
+  }
+};
 
-exports.deleteMessage = async function(req, res, next) {};
+exports.deleteMessage = async function(req, res, next) {
+  try {
+    let foundMessage = await db.Message.findById(req.params.message_id);
+    await foundMessage.remove();
+    return res.status(200).json(foundMessage);
+  } catch (error) {}
+};
