@@ -17,6 +17,7 @@ class MessageItem extends Component {
             alt={this.props.username}
             height="100"
             width="100"
+            className="timeline-image"
           />
           <div className="message-area">
             <Link to="/">@{this.props.username} &nbsp;</Link>
@@ -26,9 +27,11 @@ class MessageItem extends Component {
               </Moment>
             </span>
             <p>{this.props.text}</p>
-            <a className="btn btn-danger" onClick={this.props.removeMessage}>
-              Delete
-            </a>
+            {this.props.isCorrectUser && (
+              <a className="btn btn-danger" onClick={this.props.removeMessage}>
+                Delete
+              </a>
+            )}
           </div>
         </li>
       </div>
