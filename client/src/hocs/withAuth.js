@@ -8,6 +8,11 @@ export default function withAuth(ComponentToBeRendered) {
         this.props.history.push("/signin");
       }
     }
+    componentWillUpdate(nextProps) {
+      if (nextProps.isAuthenticated === false) {
+        this.props.history.push("/signin");
+      }
+    }
     render() {
       return <ComponentToBeRendered {...this.props} />;
     }

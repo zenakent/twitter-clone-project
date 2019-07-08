@@ -26,6 +26,9 @@ class MessageItem extends Component {
               </Moment>
             </span>
             <p>{this.props.text}</p>
+            <a className="btn btn-danger" onClick={this.props.removeMessage}>
+              Delete
+            </a>
           </div>
         </li>
       </div>
