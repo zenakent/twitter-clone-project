@@ -4,23 +4,11 @@ import { fetchMessages, removeMessage } from "../store/actions/messages";
 import MessageItem from "../components/MessageItem";
 
 class MessageList extends Component {
-  constructor(props) {
-    super(props);
-
-    this.handleRemove = this.handleRemove.bind(this);
-  }
-
   componentDidMount() {
     this.props.fetchMessages();
   }
 
-  handleRemove(user_id, message_id) {
-    console.log("hello");
-    this.props.removeMessage(user_id, message_id);
-  }
-
   render() {
-    console.log(this.props);
     const { messages, removeMessage } = this.props;
     let messageList = messages.map(m => (
       <MessageItem
@@ -31,7 +19,6 @@ class MessageList extends Component {
         text={m.text}
         profileImageUrl={m.user.profileImageUrl}
         removeMessage={removeMessage.bind(this, m.user._id, m._id)}
-        // removeMessage={this.handleRemove(m.user._id, m._id)}
       />
     ));
     return (
